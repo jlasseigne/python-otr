@@ -52,5 +52,5 @@ setup(
     packages=['otr'],
     provides=['otr'],
     requires=requirements,
-    install_requires=[requirement.translate(' ()') for requirement in requirements]
+    install_requires=[requirement.translate(str.maketrans('','',' ()')) for requirement in requirements]
 )
