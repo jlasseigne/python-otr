@@ -992,7 +992,7 @@ def smp_message_handler(expected_state):
                 elif self.smp.state is not expected_state:
                     raise ValueError('received {0.__class__.__name__} out of order'.format(tlv))
                 function(self, tlv)
-            except ValueError, e:
+            except ValueError as e:
                 self._smp_terminate(status=SMPStatus.ProtocolError, reason=str(e), send_abort=True)
         return function_wrapper
     return smp_message_handler_wrapper
@@ -1264,7 +1264,7 @@ class OTRProtocol(object):
             error = "Invalid session key requested"
             self.send_message(ErrorMessage(error))
             raise EncryptedMessageError(error)
-        except ValueError, e:
+        except ValueError as e:
             error = str(e)
             self.send_message(ErrorMessage(error))
             raise EncryptedMessageError(error)
