@@ -325,7 +325,7 @@ class PrivateKey(object):
 
     def save(self, path):
         content = self._key.private_bytes(serialization.Encoding.PEM, serialization.PrivateFormat.PKCS8, serialization.NoEncryption())
-        with openfile(path, 'wb', permissions=0600) as key_file:
+        with openfile(path, 'wb', permissions=600) as key_file:
             key_file.write(content)
 
 
